@@ -62,11 +62,11 @@ add_library(direct_visual_lidar_calibration SHARED
   src/vlcal/calib/visual_camera_calibration.cpp
 )
 target_include_directories(direct_visual_lidar_calibration PUBLIC
-  include
-  thirdparty/json/include
-  thirdparty/Bonxai/include
-  thirdparty/nanoflann/include
-  thirdparty/Sophus
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/json/include>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/Bonxai/include>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/nanoflann/include>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/Sophus>
   ${Boost_INCLUDE_DIRS}
   ${CERES_INCLUDE_DIRS}
   ${GTSAM_INCLUDE_DIRS}
