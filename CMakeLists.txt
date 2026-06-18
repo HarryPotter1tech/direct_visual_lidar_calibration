@@ -164,9 +164,11 @@ target_link_libraries(viewer
 )
 
 install(
-  TARGETS
-  direct_visual_lidar_calibration
+  TARGETS direct_visual_lidar_calibration
+  EXPORT direct_visual_lidar_calibration_export
+  LIBRARY DESTINATION lib
 )
+install(DIRECTORY include/ DESTINATION include)
 
 install(
   TARGETS
@@ -185,6 +187,6 @@ else()
   # ROS2
   ament_python_install_package(${PROJECT_NAME})
   install(PROGRAMS scripts/find_matches_superglue.py DESTINATION lib/${PROJECT_NAME})
-  ament_export_libraries(direct_visual_lidar_calibration)
+  ament_export_targets(direct_visual_lidar_calibration_export HAS_LIBRARY_TARGET)
   ament_auto_package()
 endif()
